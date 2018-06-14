@@ -1,19 +1,18 @@
 {% extends 'books/base.html' %}
 {% block content %}
 
-<h2>Welcome To Our Book List</h2>
-
-
-
-<ul>
+<h1>Welcome</h1>
+<div class="container">
+    <div class="row">
    {% for book in books %}
+   <div class="col-xs-4">   
        <h2>{{ book.name }}</h2>
-       <li>{{ book.author }}</li>
-       <li>{{ book.ISBN }}</li>
-       <li>{{ book.date }}</li>
-        <img src='{{ MEDIA_URL}}{{book.image}}' width='200px'>
+       <p>{{ book.author }}</p>
+        <img src='{{ MEDIA_URL}}{{book.image}}' width='200px' height= '250px'>
+        </div>
         {% endfor %}
-</ul>
+</div>
+</div>
 
 {% if user.is_authenticated %}
 <a href='{% url 'add_book' %}'>Add Book</a>

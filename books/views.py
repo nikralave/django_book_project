@@ -16,8 +16,11 @@ def add_book(request):
     if request.method=="POST":
       form=AddBookForm(request.POST, request.FILES)
       if form.is_valid():
-        form.save()
+        book = form.save(commit=False) 
+        book.owner = request.user
+        book.save()
       return redirect("/")
     else:
         form = AddBookForm()
+        
     return render(request, 'books/add_book.html', {'form': form})

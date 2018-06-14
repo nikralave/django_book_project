@@ -1,16 +1,15 @@
-{% extends 'books/base.html' %}
-{% load bootstrap_tags %}
-{% block content %}
+{% extends 'books/base.html' %} {% load bootstrap_tags %} {% block content %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Add a Book</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {{ form | as_bootstrap }}
 
-<h2>Add a Book</h2>
-<form method="POST" enctype="multipart/form-data">
-     {% csrf_token %}
-    {{ form | as_bootstrap }}
-
-   <input type="submit" value="Save"/>
-</form>
-
-
-
+                <input type="submit" value="Save" />
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
